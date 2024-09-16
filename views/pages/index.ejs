@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Including EJS Header -->
+    <%- include("../partials/head"); %>
+    <title>EJS Homepage</title>
+</head>
+<body className='container'>
+    <header>
+        <!-- Including EJS Header -->
+        <%- include('../partials/header', {variant: 'compact'}); %>
+    </header>
+
+    <main>
+        <div className="jumbotron">
+            <h1>This is pretty awesome</h1>
+            <p>Welcome to templating using EJS</p>
+            <!-- New: EJS Variables -->
+            <h2>Using Variables</h2>
+            <p>This is my fervent <%= tagline %></p>
+        </div>
+
+        <!-- New: EJS + JS -->
+        <ul>
+            <!-- Opening JS in EJS TAG -->
+            <% people.forEach(function(person) { %>
+                <li>
+                    <strong><%= person.first_name + " " + person.last_name %></strong><br>
+                    <em>Email</em>: <%= person.email %><br>
+                    <em>Gender</em>: <%= person.gender %><br>
+                    <em>Age</em>: <%= person.age %>
+                </li>
+                <!-- Closing JS section in EJS TAG -->
+            <% }); %>
+        </ul>
+    </main>
+
+    <footer>
+        <!-- Including EJS Footer -->
+        <%- include('../partials/footer'); %>
+    </footer>
+</body>
+</html>
